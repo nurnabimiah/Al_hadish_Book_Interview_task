@@ -47,7 +47,7 @@ class DatabaseHelper {
     final books = await _database.query('hadith_books');
     if (books.isEmpty) {
       final book1 = HadithBook(
-        name: 'Book 1',
+        name: 'Sahih Muslim',
         subName: 'Imam Bukhari',
         image: 'assets/images/book1.png',
         pageRange: '7563',
@@ -58,8 +58,8 @@ class DatabaseHelper {
       );
 
       final book2 = HadithBook(
-        name: 'Book 1',
-        subName: '3033',
+        name: 'Sahih Muslim',
+        subName: 'Imam Muslim',
         image: 'assets/images/book1.png',
         pageRange: '3033',
         chapters: [
@@ -69,7 +69,7 @@ class DatabaseHelper {
       );
 
       final book3 = HadithBook(
-        name: 'Book 1',
+        name: 'Sunan an-Nasai',
         subName: 'Imam Bukhari',
         image: 'assets/images/book1.png',
         pageRange: '5768',
@@ -103,62 +103,6 @@ class DatabaseHelper {
 
 
 
-
-
-
-
-
-
-
-
-  // static Future<void> insertSampleData() async {
-  //   final books = await _database.query('hadith_books');
-  //   if (books.isEmpty) {
-  //     await _database.insert('hadith_books',
-  //       {
-  //         'name': 'Book 1',
-  //         'image': 'image_url_for_book_1',
-  //         'page_range': 'Page Range for Book 1',
-  //       },
-  //     );
-  //
-  //     await _database.insert(
-  //       'hadith_books',
-  //       {
-  //         'name': 'Book 2',
-  //         'image': 'image_url_for_book_2',
-  //         'page_range': 'Page Range for Book 2',
-  //       },
-  //     );
-  //   }
-  //
-  //   final insertedBooks = await _database.query('hadith_books');
-  //
-  //   for (final book in insertedBooks) {
-  //     final bookId = book['id'] as int;
-  //     final chaptersExist = await _database.query('chapters', where: 'book_id = ?', whereArgs: [bookId]);
-  //
-  //     if (chaptersExist.isEmpty) {
-  //       await _database.insert(
-  //         'chapters',
-  //         {
-  //           'book_id': bookId,
-  //           'title': 'Chapter $bookId.1',
-  //           'subtitle': 'Subtitle $bookId.1',
-  //         },
-  //       );
-  //
-  //       await _database.insert(
-  //         'chapters',
-  //         {
-  //           'book_id': bookId,
-  //           'title': 'Chapter $bookId.2',
-  //           'subtitle': 'Subtitle $bookId.2',
-  //         },
-  //       );
-  //     }
-  //   }
-  // }
 
   static Database get database => _database;
 }
