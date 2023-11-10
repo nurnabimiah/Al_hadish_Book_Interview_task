@@ -6,15 +6,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../../controller/hadith_book_controller.dart';
+import '../../../data/model/hadith_book_model.dart';
 import '../../../utils/app_color_resources.dart';
 import '../../../utils/app_style.dart';
 import '../../widgets/search_text_filed_widget.dart';
 
 class ChapterListScreen extends StatelessWidget {
-  const ChapterListScreen({Key? key}) : super(key: key);
+
+  final HadithBook? book;
+  ChapterListScreen({Key? key, this.book}) : super(key: key);
+
+  //final chatListController =Get.put(HadithBookController());
 
   @override
   Widget build(BuildContext context) {
+    print('................................${book!.chapters!.length}');
     return Scaffold(
       backgroundColor: AppColorResources.appPrimaryThemeColor,
       appBar: AppBar(
@@ -31,7 +38,7 @@ class ChapterListScreen extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Books Name', style: myStyleSourcePoppins(fontSize: 16.sp, color: AppColorResources.appPrimaryWhiteColor, fontWeight: FontWeight.w600)),
+                Text(book!.name, style: myStyleSourcePoppins(fontSize: 16.sp, color: AppColorResources.appPrimaryWhiteColor, fontWeight: FontWeight.w600)),
                 Text('Books Name', style: myStyleSourceInter(fontSize: 12.sp, color: AppColorResources.appPrimaryWhiteColor, fontWeight: FontWeight.w500)),
               ],
             ),
@@ -63,12 +70,14 @@ class ChapterListScreen extends StatelessWidget {
 
                   SizedBox(height: 10.h,),
 
-                  Expanded( // Wrap the ListView with Expanded
+                  Expanded(
                     child: ListView.separated(
                       physics: NeverScrollableScrollPhysics(),
-                      itemCount: 10,
+                      itemCount: book!.chapters!.length,
                       separatorBuilder: (BuildContext context, index) => SizedBox(height: 10.h),
-                      itemBuilder: (BuildContext context, index) {
+                      itemBuilder: (BuildContext context, ind) {
+                        final chapter = book!.chapters![ind];
+
                         return Container(
                           //height: 68.h,
                           decoration: BoxDecoration(
@@ -87,20 +96,20 @@ class ChapterListScreen extends StatelessWidget {
                                     color: AppColorResources.appPrimaryThemeColor,
                                     shape: BoxShape.circle
                                   ),
-                                  child: Center(child: Text('${index.toString()}', style: myStyleSourceInter(fontSize: 14.sp, color: AppColorResources.appPrimaryWhiteColor),)),
+                                  child: Center(child: Text('${ind.toString()}', style: myStyleSourceInter(fontSize: 14.sp, color: AppColorResources.appPrimaryWhiteColor),)),
                                 ),
                                 SizedBox(width:15.w ,),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text('Suject Name ', style:myStyleSourcePoppins(fontSize: 14.sp, color: Color(0XFF5D646F),fontWeight: FontWeight.w500),),
-                                    Text('Hadith Range: 1-7', style:myStyleSourceInter(fontSize: 12.sp, color:Colors.grey,fontWeight:FontWeight.w500),),
+                                    Text(chapter.title, style:myStyleSourcePoppins(fontSize: 14.sp, color: Color(0XFF5D646F),fontWeight: FontWeight.w500),),
+                                    Text(chapter.subtitle, style:myStyleSourceInter(fontSize: 12.sp, color:Colors.grey,fontWeight:FontWeight.w500),),
                                   ],
                                 )
                               ],
                             ),
                           ),
-                          
+
                         );
                       },
                     ),

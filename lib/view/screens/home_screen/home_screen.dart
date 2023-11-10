@@ -10,6 +10,7 @@ import '../../../controller/hadith_book_controller.dart';
 import '../../../utils/app_color_resources.dart';
 import '../../../utils/app_const_file.dart';
 import '../../../utils/app_style.dart';
+import '../chapter_list_screen/chapter_list_screen.dart';
 
 
 
@@ -175,51 +176,57 @@ class HomeScreen extends StatelessWidget {
                           separatorBuilder: (BuildContext context,index)=>SizedBox(height:12.h ,),
                           itemBuilder: (BuildContext context,index){
                            final book = controller.books[index];
-                            return Container(
-                              height: 70.h,
-                              decoration: BoxDecoration(
-                                  color:AppColorResources.appPrimaryWhiteColor,
-                                  boxShadow: [
-                                    BoxShadow(color: Colors.grey, spreadRadius: 0.0, blurRadius: 0.0, offset: Offset(0, 0.1),),],
-                                    borderRadius: BorderRadius.all(Radius.circular(10.r))),
-                                 child:Padding(
-                                   padding:  EdgeInsets.only(left: 14.0.w,right: 14.w),
-                                   child: Row(
-                                     children: [
+                           print('..........................>>>>> ${book.toString()}');
+                            return GestureDetector(
+                              onTap: (){
+                                Get.to(ChapterListScreen (book: book));
+                              },
+                              child: Container(
+                                height: 70.h,
+                                decoration: BoxDecoration(
+                                    color:AppColorResources.appPrimaryWhiteColor,
+                                    boxShadow: [
+                                      BoxShadow(color: Colors.grey, spreadRadius: 0.0, blurRadius: 0.0, offset: Offset(0, 0.1),),],
+                                      borderRadius: BorderRadius.all(Radius.circular(10.r))),
+                                   child:Padding(
+                                     padding:  EdgeInsets.only(left: 14.0.w,right: 14.w),
+                                     child: Row(
+                                       children: [
 
-                                       Row(
+                                         Row(
 
-                                         children: [
-                                           Padding(
-                                             padding: const EdgeInsets.all(8.0),
-                                             child: Image.asset('assets/images/book1.png', fit: BoxFit.cover),
-                                           ),
-                                           Column(
-                                             mainAxisAlignment: MainAxisAlignment.center,
-                                             crossAxisAlignment: CrossAxisAlignment.start,
-                                             children: [
-                                               Text(book.name,style: myStyleSourcePoppins(fontSize: 14.sp, color: AppColorResources.appPrimaryBlackColor,fontWeight: FontWeight.w500)),
-                                               Text(book.subName,style: myStyleSourcePoppins(fontSize: 12.sp, color: AppColorResources.appPrimaryBlackColor.withOpacity(0.5),fontWeight: FontWeight.w400)),
+                                           children: [
+                                             Padding(
+                                               padding: const EdgeInsets.all(8.0),
+                                               child: Image.asset('assets/images/book1.png', fit: BoxFit.cover),
+                                             ),
+                                             Column(
+                                               mainAxisAlignment: MainAxisAlignment.center,
+                                               crossAxisAlignment: CrossAxisAlignment.start,
+                                               children: [
+                                                 Text(book.name,style: myStyleSourcePoppins(fontSize: 14.sp, color: AppColorResources.appPrimaryBlackColor,fontWeight: FontWeight.w500)),
+                                                 Text(book.subName,style: myStyleSourcePoppins(fontSize: 12.sp, color: AppColorResources.appPrimaryBlackColor.withOpacity(0.5),fontWeight: FontWeight.w400)),
 
-                                             ],
-                                           ),
-                                         ],
-                                       ),
-                                       Spacer(),
-                                       Column(
-                                         mainAxisAlignment: MainAxisAlignment.center,
-                                         crossAxisAlignment: CrossAxisAlignment.end,
-                                         children: [
-                                           Text(book.pageRange,style: myStyleSourcePoppins(fontSize: 14.sp, color: AppColorResources.appPrimaryBlackColor,fontWeight: FontWeight.w500)),
-                                           Text('Hadith',style: myStyleSourcePoppins(fontSize: 12.sp, color: AppColorResources.appPrimaryBlackColor.withOpacity(0.5),fontWeight: FontWeight.w400)),
-                                         ],
-                                       )
+                                               ],
+                                             ),
+                                           ],
+                                         ),
+                                         Spacer(),
+                                         Column(
+                                           mainAxisAlignment: MainAxisAlignment.center,
+                                           crossAxisAlignment: CrossAxisAlignment.end,
+                                           children: [
+                                             Text(book.pageRange,style: myStyleSourcePoppins(fontSize: 14.sp, color: AppColorResources.appPrimaryBlackColor,fontWeight: FontWeight.w500)),
+                                             Text('Hadith',style: myStyleSourcePoppins(fontSize: 12.sp, color: AppColorResources.appPrimaryBlackColor.withOpacity(0.5),fontWeight: FontWeight.w400)),
+                                           ],
+                                         )
 
-                                     ],
-                                   ),
-                                 )
+                                       ],
+                                     ),
+                                   )
 
 
+                              ),
                             );
                         },
 

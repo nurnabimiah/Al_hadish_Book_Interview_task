@@ -14,9 +14,9 @@ class HadithBook {
   final String subName;
   final String image;
   final String pageRange;
-  final List<Chapter> chapters;
+  final List<Chapter> ?chapters;
 
-  HadithBook({this.id, required this.name,required this.subName, required this.image, required this.pageRange, required this.chapters});
+  HadithBook({this.id, required this.name,required this.subName, required this.image, required this.pageRange, this.chapters});
 
   // Convert HadithBook instance to a map
   Map<String, dynamic> toMap() {
@@ -40,17 +40,24 @@ class HadithBook {
       chapters: [],
     );
   }
+
+  @override
+  String toString() {
+    return 'HadithBook{id: $id, name: $name, subName: $subName, image: $image, pageRange: $pageRange, chapters: $chapters}';
+  }
 }
+
 
 class Chapter {
   final int? id;
+  String ? bookId;
   final String title;
   final String subtitle;
 
-  Chapter({this.id, required this.title, required this.subtitle});
+  Chapter({this.id, this.bookId, required this.title, required this.subtitle});
 
   // Convert Chapter instance to a map
-  Map<String, dynamic> toMap(int bookId) {
+  Map<String, dynamic> toMap() {
     return {
       'id': id,
       'book_id': bookId,
@@ -63,8 +70,14 @@ class Chapter {
   static Chapter fromMap(Map<String, dynamic> map) {
     return Chapter(
       id: map['id'],
+      bookId: map['bookId'],
       title: map['title'],
       subtitle: map['subtitle'],
     );
+  }
+
+  @override
+  String toString() {
+    return 'Chapter{id: $id, bookId:$bookId, title: $title, subtitle: $subtitle}';
   }
 }

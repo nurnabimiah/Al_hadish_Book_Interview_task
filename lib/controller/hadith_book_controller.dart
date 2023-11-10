@@ -18,6 +18,7 @@ import '../db_helper/db_helper.dart';
 
 
 class HadithBookController extends GetxController {
+
   RxList<HadithBook> _books = <HadithBook>[].obs;
 
   @override
@@ -31,6 +32,11 @@ class HadithBookController extends GetxController {
     await _loadBooks();
   }
 
+
+
+
+
+
   Future<void> _loadBooks() async {
     final books = await DatabaseHelper.database.query('hadith_books');
     for (final book in books) {
@@ -41,6 +47,7 @@ class HadithBookController extends GetxController {
       final String pageRange = book['page_range'] as String;
 
       final chapters = await DatabaseHelper.database.query('chapters', where: 'book_id = ?', whereArgs: [bookId]);
+      print('...............................>>> ${chapters}');
 
       final hadithBook = HadithBook(
         id: bookId,
