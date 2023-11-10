@@ -36,6 +36,9 @@ class HomeScreen extends StatelessWidget {
               Scaffold.of(context).openDrawer();
             },
             child: Image.asset('assets/icons/menu.png')),
+        actions: [
+          IconButton(onPressed: (){}, icon: Icon(Icons.search,color: AppColorResources.appPrimaryWhiteColor,size: 24.sp,))
+        ],
 
       ),
       drawer: Drawer(
@@ -198,7 +201,8 @@ class HomeScreen extends StatelessWidget {
                                            children: [
                                              Padding(
                                                padding: const EdgeInsets.all(8.0),
-                                               child: Image.asset('assets/images/book1.png', fit: BoxFit.cover),
+                                               //child: Image.asset('assets/images/book1.png', fit: BoxFit.cover),
+                                               child: Image.asset('${book.image}', fit: BoxFit.cover),
                                              ),
                                              Column(
                                                mainAxisAlignment: MainAxisAlignment.center,

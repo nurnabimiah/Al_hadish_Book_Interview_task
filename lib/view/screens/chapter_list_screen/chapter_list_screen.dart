@@ -14,10 +14,11 @@ import '../../widgets/search_text_filed_widget.dart';
 
 class ChapterListScreen extends StatelessWidget {
 
+  static const String routeName = '/chapter_list_screen_route';
   final HadithBook? book;
   ChapterListScreen({Key? key, this.book}) : super(key: key);
 
-  //final chatListController =Get.put(HadithBookController());
+
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +97,7 @@ class ChapterListScreen extends StatelessWidget {
                                     color: AppColorResources.appPrimaryThemeColor,
                                     shape: BoxShape.circle
                                   ),
-                                  child: Center(child: Text('${ind.toString()}', style: myStyleSourceInter(fontSize: 14.sp, color: AppColorResources.appPrimaryWhiteColor),)),
+                                  child: Center(child: Text('${(ind+1).toString()}', style: myStyleSourceInter(fontSize: 14.sp, color: AppColorResources.appPrimaryWhiteColor),)),
                                 ),
                                 SizedBox(width:15.w ,),
                                 Column(

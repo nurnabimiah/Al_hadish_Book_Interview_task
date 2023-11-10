@@ -20,6 +20,7 @@ import '../db_helper/db_helper.dart';
 class HadithBookController extends GetxController {
 
   RxList<HadithBook> _books = <HadithBook>[].obs;
+  List<HadithBook> get books => _books;
 
   @override
   void onInit() {
@@ -67,7 +68,7 @@ class HadithBookController extends GetxController {
     update();
   }
 
-  List<HadithBook> get books => _books;
+
 
 
 

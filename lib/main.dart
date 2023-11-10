@@ -1,7 +1,9 @@
 
 import 'package:al_hadish_book_interview/utils/app_color_resources.dart';
 import 'package:al_hadish_book_interview/view/screens/chapter_list_screen/chapter_list_screen.dart';
+import 'package:al_hadish_book_interview/view/screens/home_screen/home_screen.dart';
 import 'package:al_hadish_book_interview/view/screens/landing_screen/landing_screen.dart';
+import 'package:al_hadish_book_interview/view/screens/start_screen/start_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,13 +37,15 @@ class MyApp extends StatelessWidget {
             textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
           ),
 
-          // initialRoute: LandigScreen.routeName,
-          home: LandigScreen()
+          initialRoute: StartScreen.routeName,
 
-          // getPages: [
-          //   GetPage(name: LandigScreen.routeName, page: () =>LandigScreen()),
-          //
-          // ],
+          getPages: [
+            GetPage(name: StartScreen.routeName, page: () =>StartScreen()),
+            GetPage(name: LandigScreen.routeName, page: () =>LandigScreen()),
+            GetPage(name: HomeScreen.routeName, page: () =>HomeScreen()),
+            GetPage(name: ChapterListScreen.routeName, page: () =>ChapterListScreen()),
+
+          ],
         );
       },
     );
